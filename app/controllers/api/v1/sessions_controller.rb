@@ -1,9 +1,5 @@
 class Api::V1::SessionsController < ApplicationController
   
-    def show
-      render json: my_user
-    end
-  
     def create
   
       query_params = {
