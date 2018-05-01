@@ -13,7 +13,7 @@ class Api::V1::UsersController < ApplicationController
   
         user.update(profile_img_url: img_url,access_token: encodedAccess,refresh_token: encodedRefresh)
   
-        render json: user_with_token(user)
+        render json: user.to_json(:except => [:access_token, :refresh_token, :created_at, :updated_at])
     end
 
     private
