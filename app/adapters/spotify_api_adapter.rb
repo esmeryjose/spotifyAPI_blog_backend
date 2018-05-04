@@ -17,7 +17,8 @@ class SpotifyApiAdapter
         body[:code] = code
         body[:redirect_uri] = ENV['REDIRECT_URI']
 
-        authorize(body)
+        auth_response = RestClient.post(URLS["auth"], body)
+        JSON.parse(auth_response.body)
     end
 
     def self.getUserData(access_token)
@@ -30,9 +31,5 @@ class SpotifyApiAdapter
         JSON.parse(user_response.body)
     end
 
-    def self.authorize(body)
-        auth_response = RestClient.post(URLS["auth"], body)
-        JSON.parse(auth_response.body)
-    end
 
 end
