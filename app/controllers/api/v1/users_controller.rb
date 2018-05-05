@@ -20,9 +20,7 @@ class Api::V1::UsersController < ApplicationController
     def user_params(user_data)
         params = {
         display_name: user_data["display_name"],
-        spotify_id: user_data["id"],
         spotify_url: user_data["external_urls"]["spotify"],
-        uri: user_data["uri"]
         }
     end
 end
