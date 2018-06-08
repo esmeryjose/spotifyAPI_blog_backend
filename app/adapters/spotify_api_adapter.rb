@@ -1,8 +1,11 @@
 class SpotifyApiAdapter
-    URLS={
-        "auth" => "https://accounts.spotify.com/api/token",
-        "me" => "https://api.spotify.com/v1/me",
-    }
+    
+    def urls
+        {
+            "auth" => "https://accounts.spotify.com/api/token",
+            "me" => "https://api.spotify.com/v1/me",
+        }
+    end
 
     def self.body_params
         body = {
@@ -17,7 +20,7 @@ class SpotifyApiAdapter
         body[:code] = code
         body[:redirect_uri] = ENV['REDIRECT_URI']
 
-        auth_response = RestClient.post(URLS["auth"], body)
+        auth_response = RestClient.post(urls["auth"], body)
         JSON.parse(auth_response.body)
     end
 
@@ -26,7 +29,7 @@ class SpotifyApiAdapter
             "Authorization": "Bearer #{access_token}"
         }
 
-        user_response = RestClient.get(URLS["me"], header)
+        user_response = RestClient.get(urls["me"], header)
 
         JSON.parse(user_response.body)
     end
