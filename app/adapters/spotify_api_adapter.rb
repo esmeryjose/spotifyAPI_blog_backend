@@ -1,6 +1,6 @@
 class SpotifyApiAdapter
     
-    def urls
+    def self.urls
         {
             "auth" => "https://accounts.spotify.com/api/token",
             "me" => "https://api.spotify.com/v1/me",
